@@ -1,0 +1,268 @@
+@import "../../styles/mixin.scss";
+
+.main {
+  position: relative;
+  background: $bgColor;
+  max-width: 1440px;
+  min-height: 1024px;
+  margin: 0 auto;
+  padding: 69px 0 0 0;
+}
+
+.main__spin {
+  position: absolute !important;
+  top: 23px;
+  right: 140px;
+}
+
+.main__exit {
+  position: absolute;
+  right: 60px;
+  top: 20px;
+  font-family: "Roboto-Regular";
+  font-size: 20px;
+  color: rgba(17, 87, 167, 1);
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 71px;
+    background: url("../../assets/svg/exit.svg") no-repeat;
+    height: 30px;
+    width: 100%;
+  }
+}
+
+.main__info-wrapper {
+  max-width: 680px;
+  min-height: 895px;
+  background: white;
+  box-shadow: 0px 4px 18px rgb(0 0 0 / 25%);
+  border-radius: 20px;
+  margin: 0 auto;
+  padding: 65px 40px 54px;
+}
+
+.main__info-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.main__info-title {
+  position: relative;
+  font-family: "Roboto-Medium";
+  font-size: 32px;
+  line-height: 37px;
+  color: #424242;
+
+  @include adaptive(smartfon) {
+    font-size: 22px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: 140px;
+    transform: rotate(-45deg);
+    height: 17px;
+    width: 17px;
+    border-right: 2px solid #a7a7a7;
+    border-bottom: 2px solid #a7a7a7;
+
+    @include adaptive(smartfon) {
+      display: none;
+    }
+  }
+}
+
+.main__info-title_flight {
+  text-transform: uppercase;
+  margin-left: 60px;
+  &::before {
+    content: "";
+    display: none;
+  }
+}
+
+input:not([type="range"]) {
+  font-size: 25px !important;
+  color: rgba(17, 87, 167, 1) !important;
+  font-family: "SFProText-bold" !important;
+}
+.main__info-calend {
+  background: url("../../assets/svg/calendar.svg") no-repeat;
+  height: 25px;
+  width: 25px;
+}
+
+.main__input-calendar {
+  font-family: "SFProText-bold";
+  margin-left: auto;
+
+  @include adaptive(iPads) {
+    margin-left: inherit;
+  }
+}
+
+.main__number-flights {
+  font-size: 17px;
+  font-family: "SFProText-Medium";
+
+  @include adaptive(smartfon) {
+    font-size: 15px;
+    text-align: center;
+  }
+}
+//---
+.main__flight-wrapper {
+  display: flex;
+  margin: 20px 10px;
+}
+
+.main__flight-img {
+  position: relative;
+  height: 64px;
+  width: 64px;
+  background: url("../../assets/svg/Ellipse.svg") no-repeat;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 14px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 35px;
+    width: 35px;
+    background: url("../../assets/svg/plane.svg");
+  }
+
+  @include adaptive(iPads) {
+    display: none;
+  }
+}
+
+.main__fight-columnRight {
+  margin-left: 20px;
+  width: 500px;
+}
+
+.main__flight-row {
+  display: flex;
+  justify-content: space-between;
+
+  @include adaptive(smartfon) {
+    text-align: -webkit-center;
+    display: block;
+  }
+}
+
+.main__flight-info {
+  font-size: 17px;
+}
+
+.main__flight-price {
+  font-family: "SFProText-Medium";
+}
+
+.main__flight-text {
+  font-family: "SFProText-Light";
+  font-size: 14px;
+
+  @include adaptive(smartfon) {
+    text-align: center;
+  }
+}
+
+.main__flight-ticker {
+  background: url("../../assets/svg/ticker.svg") no-repeat;
+  height: 18px;
+  width: 21px;
+  padding-right: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+//---
+
+//.......CARUSEL....
+.wrapper {
+  margin: 20px 0;
+  //width: 600px;
+  height: 149px;
+  position: relative;
+  overflow: hidden;
+}
+
+.filmLenta {
+  display: flex;
+  position: absolute;
+  transition: 0.8s;
+}
+
+.filmLenta__item {
+  width: 164px;
+  height: 149px;
+  background: #a7a7a7;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  margin: 0 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.filmLenta__arrow-left {
+  position: absolute;
+  top: 60px;
+  left: 35px;
+  transform: rotate(45deg);
+  height: 17px;
+  width: 17px;
+  border-left: 2px solid #a7a7a7;
+  border-bottom: 2px solid #a7a7a7;
+  transition: 0.5s ease;
+  &:hover {
+    border-left: 2px solid rgba(17, 87, 167, 1);
+    border-bottom: 2px solid rgba(17, 87, 167, 1);
+  }
+}
+
+.filmLenta__arrow-right {
+  position: absolute;
+  top: 60px;
+  right: 27px;
+  transform: rotate(-45deg);
+  height: 17px;
+  width: 17px;
+  border-right: 2px solid #a7a7a7;
+  border-bottom: 2px solid #a7a7a7;
+  transition: 0.5s ease;
+  &:hover {
+    border-right: 2px solid rgba(17, 87, 167, 1);
+    border-bottom: 2px solid rgba(17, 87, 167, 1);
+  }
+}
+
+.filmLenta__arrowButton-left {
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  top: -6px;
+  right: -14px;
+  cursor: pointer;
+}
+
+.filmLenta__arrowButton-right {
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  top: -12px;
+  right: -44px;
+  cursor: pointer;
+}
+
+//.......CARUSEL..END...

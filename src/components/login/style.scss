@@ -1,0 +1,92 @@
+@import "../../styles/mixin.scss";
+
+.login {
+  max-width: 1440px;
+  min-height: 1024px;
+  background: url("../../assets/images/airplane-wing.png") no-repeat;
+  background-position: center;
+  backdrop-filter: blur(20px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+  }
+}
+
+.login__spin {
+  position: absolute !important;
+  top: 360px;
+  z-index: 21;
+}
+
+.login__form {
+  padding: 50px 20px 30px;
+  width: 410px;
+  height: 338px;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4px 10px rgb(0 0 0 / 15%);
+  border-radius: 20px;
+  z-index: 20;
+  overflow: hidden;
+}
+
+.login__form-title {
+  font-family: "Roboto-Medium";
+  font-size: 24px;
+  color: rgba(66, 66, 66, 1);
+  text-align: center;
+}
+
+.login__form-text {
+  margin-top: 15px;
+  font-size: 16px;
+  color: rgba(66, 66, 66, 1);
+}
+
+.login__form-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login__form-error {
+  color: red;
+  font-size: 14px;
+  font-family: "Roboto-light";
+  margin-top: 5px;
+}
+
+.login__form-btn {
+  background: linear-gradient(104.34deg, #3c4cad -15.34%, #00c3ff 145.95%);
+  box-shadow: 0px 0px 2px rgb(0 0 0 / 15%);
+  border-radius: 4px;
+  color: white;
+  width: 116px;
+  font-size: 16px;
+  align-items: center;
+  display: flex;
+  height: 34px;
+  justify-content: center;
+  margin-left: auto;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  transition: 1s ease;
+
+  &:hover {
+    background: linear-gradient(104.34deg, #102de1 -15.34%, #00c3ff 145.95%);
+  }
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}

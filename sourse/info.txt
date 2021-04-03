@@ -1,0 +1,73 @@
+ 
+
+Наше задание ниже:
+
+Внизу ссылка на макет с тестовым заданием, 2 экрана: авторизация + список вылетов 
+(города вылета/прилета захардкожены: Москва/Нью-Йорк).
+
+Можете использовать любые библиотеки. Картинки в карусели тоже захардкожены. 
+Всю информацию, которой, вдруг, нет в ответе от API - тоже захардкодь. 
+
+Только напишите, что было захардкожено, когда будете присылать решение.
+Для глобального стейта - Redux, для асинхронных действий - Redux Saga.
+
+Решение залейте на гитхаб, разверните тена хостинге 
+(heroku, netlify или любой другой по вашему желанию) и пришлите ссылки.
+https://www.figma.com/file/x84Q8T8ya6aSgWFLWkHGBz/React
+ 
+Срок выполнения: до 14.03 включительно. Если вам необходимо больше времени, пожалуйста, сообщите об этом.
+ 
+-- 
+С уважением,
+Ольга Пешкова
+Менеджер по персоналу
+ООО "ЛИИС Инженерные решения"
+hr@liis.su
++7(812)313-24-53
++7(921)925-43-15
+www.liis.su
+
+
+
+
+
+
+..
+
+
+//  const myNumber = 42
+// localStorage.removeItem('number') //удаляет только нужный нам ключ
+
+// console.log(localStorage.getItem('number'));
+//  localStorage.setItem('number', myNumber.toString())
+//  console.log(localStorage.getItem('number'));
+
+//  localStorage.clear() //удаляет все
+
+const object = {
+  name: 'Max',
+  age: 20
+}
+//localStorage.setItem('person', JSON.stringify(object))
+
+const raw = localStorage.getItem('person')
+const person = JSON.parse(raw)
+person.name = 'Denis'
+
+//console.log(person);
+
+
+// console.log(typeof JSON.parse(raw));
+// console.log(JSON.parse(raw));
+
+//=======
+window.addEventListener('storege', event => {
+  console.log(event);
+})
+
+//window.onstorage = () => {}
+
+//отличия локалсторедж от куки
+//л.с. больше по объему обычно 5мб
+//куки улетают с запросами на сервер
+//л.с. не улетает с куками на сервак это хранилище к которому только вы имеете доступ

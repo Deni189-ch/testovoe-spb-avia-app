@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'Roboto-Medium';
+  font-weight: 500;
+  font-style: normal;
+  src: local('Roboto-Medium'), local('Roboto-Medium'),
+    url('./Roboto-Medium.woff') format('woff'), 
+    url('./Roboto-Medium.woff2') format('woff2'),
+};
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  font-weight: 400;
+  font-style: normal;
+  src: local('Roboto-Regular'), local('Roboto-Regular'),
+    url('./Roboto-Regular.woff') format('woff'),
+    url('./Roboto-Regular.woff2') format('woff2'), 
+};
+
+@font-face {
+  font-family: 'Roboto-Light';
+  font-weight: 300;
+  font-style: normal;
+  src: local('Roboto-Light'), local('Roboto-Light'),
+    url('./Roboto-Light.woff') format('woff'),
+    url('./Roboto-Light.woff2') format('woff2'), 
+};
+
+
+@font-face {
+  font-family: 'SFProText-bold';
+  font-weight: 600;
+  font-style: normal;
+  src: local('SFProText-bold'), local('SFProText-bold'),
+    url('./SFProText-bold.woff') format('woff'), 
+    url('./SFProText-bold.woff2') format('woff2'),
+};
+
+@font-face {
+  font-family: 'SFProText-Medium';
+  font-weight: 500;
+  font-style: normal;
+  src: local('SFProText-Medium'), local('SFProText-Medium'),
+    url('./SFProText-Medium.woff') format('woff'),
+    url('./SFProText-Medium.woff2') format('woff2'), 
+};
+
+@font-face {
+  font-family: 'SFProText-Light';
+  font-weight: 300;
+  font-style: normal;
+  src: local('SFProText-Light'), local('SFProText-Light'),
+    url('./SFProText-light.woff') format('woff'),
+    url('./SFProText-light.woff2') format('woff2'), 
+};
+
+

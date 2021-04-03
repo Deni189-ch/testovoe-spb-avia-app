@@ -1,0 +1,26 @@
+$bgColor: #E5E5E5;
+$bgColorWhite: rgba(255, 255, 255, 1);
+
+
+
+
+@mixin adaptive($device) {
+
+  @if ($device == smartfon) {
+    @media (max-width: 450px) {
+      @content;
+    }
+  } @else if ($device == iPads) {
+    @media (max-width: 660px) {
+      @content;
+    }
+  } @else if ($device == tablet) {
+    @media (max-width: 890px) {
+      @content;
+    }
+  } @else if ($device == notebook) {
+    @media (max-width: 1135px) {
+      @content;
+    }
+  }
+}
