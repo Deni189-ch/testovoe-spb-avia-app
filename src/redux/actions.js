@@ -1,11 +1,9 @@
 import { IS_ERROR_TOGGLE, IS_SPIN_TOGGLE } from "../data/constants";
 
 
- export const setDatesAC = (value) => ({ type: IS_ERROR_TOGGLE, value });
+ export const setToggleErrorAC = value => ({ type: IS_ERROR_TOGGLE, value });
 
- export const setSpinAC = (value) => ({ type: IS_SPIN_TOGGLE, value });
-
-
+ export const setSpinAC = value => ({ type: IS_SPIN_TOGGLE, value });
 
 
 

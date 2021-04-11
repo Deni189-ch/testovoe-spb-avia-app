@@ -12,6 +12,7 @@ import planeSvg from "./svg/plane.svg";
 
 export {
    airplaneWing,
+   tickerEmptySvg, tickerSvg,
    town1, town2, town3,
-   existSvg, tickerEmptySvg, tickerSvg, calendarSvg, ellipseSvg, planeSvg
+   existSvg, calendarSvg, ellipseSvg, planeSvg
 };

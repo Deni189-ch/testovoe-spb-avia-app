@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setDatesAC, setSpinAC } from "../../redux/actions";
+import { setToggleErrorAC, setSpinAC } from "../../redux/actions";
 
 import { LoadingOutlined } from '@ant-design/icons';
 import { Input, Spin } from "antd";
@@ -11,8 +11,9 @@ import "./style.scss";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const isError = useSelector((state) => state.state.isError);
-  const spin = useSelector((state) => state.state.isSpin);
+
+  const isError = useSelector(state => state.state.isError);
+  const spin = useSelector(state => state.state.isSpin);
 
   const [data, setData] = React.useState({
     login: " ", //do not touch !
@@ -34,17 +35,12 @@ const Login = () => {
   const dataLocal = JSON.parse(raw);
 
   const handleSubmit = () => {
-    if (!data.password.length || !data.login.length) {
-      dispatch(setDatesAC(true));
-    } else {
-      if ( data.login === dataLocal.login && data.password === dataLocal.password ) {
-        dispatch(setSpinAC(true));
+    dispatch(setSpinAC(true));
 
-        localStorage.setItem("isAuth", true);
-        dispatch(setDatesAC(false));
-      } else {
-        dispatch(setDatesAC(true));
-      }
+    if ( data.login === dataLocal.login && data.password === dataLocal.password ) {
+      dispatch(setSpinAC(false));
+      dispatch(setToggleErrorAC(false));
+      localStorage.setItem("isAuth", true);
     }
   };
 
@@ -80,10 +76,13 @@ const Login = () => {
 
         <div className="login__form-footer">
           <div className="login__form-error">
-            {(!data.login.length || isError) && "Вы должны заполнить все поля"}
+            {(!data.login.length || isError) && "Заполнить все поля"}
           </div>
 
-          <button type="submit" className="login__form-btn">
+          <button type="submit" className="login__form-btn" disabled={ (
+                !data.login.trim() ||
+                !data.password.trim() 
+              ) } >
             Войти
           </button>
         </div>
@@ -93,5 +92,3 @@ const Login = () => {
 };
 
 export default Login;
-
-//Когда форму отправляешь и данные не верные, ошибку отображает и срузу скидывает - посмотри мне не нравиться

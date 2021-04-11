@@ -3,28 +3,28 @@ import { compose } from "redux";
 import {useHistory} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import { DATES_SORT_SAGA } from "../../data/constants";
 import { Carusel } from "./Carusel";
-import moment from 'moment';
 import { getPrintInfoFight } from './utils';
+import { DATES_SORT_SAGA } from "../../data/constants";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
-import { LoadingOutlined } from '@ant-design/icons';
+import moment from 'moment';
 import { DatePicker, Space, Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+
 import "./style.scss";
 
 
-
 const Main = () => {
-  const [newDates, setNewDates] = React.useState(moment().format("YYYY-MM-DD").toString());//'2021-04-30'  moment().format("YYYY-MM-DD").toString().trim().split(' ').join('-').trim()
-  const [treeRender, setTreeRender] = React.useState(false);
-  
+  const [newDates, setNewDates] = React.useState(moment().format("YYYY-MM-DD").toString());
+  const [countFavorites, setCountFavorites] = React.useState(0);
+
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const caruselImg = useSelector((state) => state.state.caruselImg);
-  const dates = useSelector((state) => state.state.dates);
-  const spin = useSelector((state) => state.state.isSpin);
+  const caruselImg = useSelector( state => state.state.caruselImg);
+  const dates = useSelector( state => state.state.dates);
+  const spin = useSelector( state => state.state.isSpin);
 
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin /> //antd-spin
 
@@ -54,13 +54,14 @@ const Main = () => {
     return current && current < moment().endOf('day');
   }
   //The end of calendar information processing.
-
-
+  const tickerHandler = (id) => {
+    
+  }
   //Info-print.
   let PrintInfoFight
-  if (Object.values(dates).length > 0) {
-    //debugger
-    PrintInfoFight =  getPrintInfoFight(dates).map(({ id, DepartureDate, From, To, MinPrice, Name, QuoteDateTime, }) => {
+  if (dates.Carriers && dates.Carriers.length > 0) {
+    PrintInfoFight =  getPrintInfoFight(dates).map(({ id, DepartureDate, From, To, MinPrice, Name, QuoteDateTime, isTicker}) => {
+       
       return (
       <div className="main__flight-wrapper" key={id}>
         <div className="main__fight-columnLeft">
@@ -70,7 +71,12 @@ const Main = () => {
         <div className="main__fight-columnRight">
           <div className="main__flight-row">
             <div className="main__flight-info"> {From} &#8594; {To} </div>
-            <div className="main__flight-ticker" />
+            {
+            isTicker 
+            ? <div className='main__showe-ticker' onClick={()=> tickerHandler(id)} />
+            : <div className='main__empty-ticker' onClick={()=> tickerHandler(id)} />
+            }
+            {/* <div className={{isTicker} ? 'main__showe-ticker' : 'main__empty-ticker'} onClick={()=> tickerHandler(id)} /> */}
           </div>
           
           <div className="main__flight-text"> {DepartureDate} - {QuoteDateTime} </div>
@@ -83,14 +89,12 @@ const Main = () => {
       </div>
       )
     })
-    //setTreeRender(!treeRender)
   }
   //The end info print.
-  console.log('Компонента =', dates);
  
   const exitHandler = () => {
     localStorage.setItem("isAuth", false);
-    history.push("/login"); //тут костыль сделал как смог
+    history.push("/login");
   };
   
   return (
@@ -110,7 +114,8 @@ const Main = () => {
           
           <Space direction="vertical"  className="main__input-calendar"  >
               <DatePicker onChange={newDateHandler}
-               disabledDate={disabledDate} 
+               disabledDate={disabledDate}
+               autoFocus={false}
                allowClear={false}
                bordered={false}
                defaultValue={moment(newDates, dateFormat)} 
@@ -123,7 +128,7 @@ const Main = () => {
         <Carusel caruselImg={caruselImg} />
         
         <div className="main__number-flights">
-          Добавлено в Избранное: <span style={{ color: "#135aab" }}>10</span>{" "}
+          Добавлено в Избранное: <span style={{ color: "#135aab" }}>{countFavorites}</span>{" "}
           рейсов
         </div>
 
@@ -135,45 +140,3 @@ const Main = () => {
 };
 
 export default compose(withAuthRedirect)(Main);
-
-/**
- * <div className="main__flight-row" key={id}>
-      <div className="main__flight-info"> Moscow (SVO) &#8594; New York City (JFK) </div>
-      <div className="main__flight-ticker" />
-    </div>
-    
-    <div className="main__flight-text">28 June, 2020 - 14:50</div>
-
-    <div className="main__flight-row">
-      <div className="main__flight-info"> Aeroflot </div>
-      <div className="main__flight-price">Price: 23 924</div>
-    </div>
- */
-
-
-/**
- * {
-(Object.values(dates).length > 0) && getPrintInfoFight(dates).map(({ id, DepartureDate, From, To, MinPrice, Name, QuoteDateTime, }) => {
-  return (
-  <div className="main__flight-wrapper" key={id}>
-    <div className="main__fight-columnLeft">
-      <div className="main__flight-img" />
-    </div>
-
-    <div className="main__fight-columnRight">
-      <div className="main__flight-row">
-        <div className="main__flight-info"> {From} &#8594; {To} </div>
-        <div className="main__flight-ticker" />
-      </div>
-      
-      <div className="main__flight-text"> {DepartureDate} - {QuoteDateTime} </div>
-
-      <div className="main__flight-row">
-        <div className="main__flight-info"> {Name} </div>
-        <div className="main__flight-price">Price: {MinPrice}</div>
-      </div>                
-    </div>
-  </div>
-  )
-})
-} */    

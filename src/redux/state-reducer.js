@@ -24,11 +24,12 @@ export const stateReducer = (state = initialState, action) => {
     case DATES_SORT:
       return { ...state, dates: action.payload };
 
-      case IS_ERROR_TOGGLE:
+    case IS_ERROR_TOGGLE:
       return { ...state, isError: action.value };
 
-      case IS_SPIN_TOGGLE:
+    case IS_SPIN_TOGGLE:
       return { ...state, isSpin: action.value };
+    
     default:
       return state;
   }

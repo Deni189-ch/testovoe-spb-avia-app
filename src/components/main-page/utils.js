@@ -31,30 +31,26 @@ export const getPlace = ( id, Quotes, Places, Name ) => {
 
     if (CarrierIds.includes(id)) {
       acc = {
-        id: OriginId + MinPrice,
+        id: id,
         From: getPlaceString(OriginId),
         To: getPlaceString(DestinationId),
         DepartureDate: getDate(DepartureDate),
         QuoteDateTime: getHour(QuoteDateTime),
         MinPrice: MinPrice,
-        Name: Name
+        Name: Name,
+        isTicker: true
       }
     }
     return acc
   }, {})
-}
+};
 
-export const getPrintInfoFight = (dates) => {
-  if(Object.values(dates).length > 0) {
-    //debugger
-    return dates.Carriers.map( ( {CarrierId, Name} ) => {
-      const { Quotes, Places } = dates
-  
-      return getPlace(CarrierId, Quotes, Places, Name)
-    })
-  }
-  //debugger
+export const getPrintInfoFight = ( {Carriers, Quotes, Places } ) => {
+
+  if(Carriers.length > 0) return Carriers.map( ( {CarrierId, Name} ) => {   
+
+    return getPlace(CarrierId, Quotes, Places, Name)
+  })
   return null
-}
-
+};
 //The end of Processing information on aircraft departure.

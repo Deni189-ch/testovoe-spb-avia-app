@@ -179,8 +179,16 @@ input:not([type="range"]) {
   }
 }
 
-.main__flight-ticker {
+.main__showe-ticker {
   background: url("../../assets/svg/ticker.svg") no-repeat;
+  height: 18px;
+  width: 21px;
+  padding-right: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.main__empty-ticker {
+  background: url("../../assets/svg/ticker-empty.svg") no-repeat;
   height: 18px;
   width: 21px;
   padding-right: 20px;
