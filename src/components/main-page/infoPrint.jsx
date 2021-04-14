@@ -1,17 +1,13 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
 import { getPrintInfoFight } from "./utils";
 
 import "./style.scss";
 
-export const InfoPrint = () => {
-  const dates = useSelector(state => state.state.dates);
-
+export const InfoPrint = ({ dates }) => {
   const tickerHandler = (id) => {};
 
   return (
-    <>
+    <div>
       {dates.Carriers &&
         dates.Carriers.length > 0 &&
         getPrintInfoFight(dates).map(
@@ -48,7 +44,6 @@ export const InfoPrint = () => {
                         onClick={() => tickerHandler(id)}
                       />
                     )}
-                    {/* <div className={{isTicker} ? 'main__showe-ticker' : 'main__empty-ticker'} onClick={()=> tickerHandler(id)} /> */}
                   </div>
 
                   <div className="main__flight-text">
@@ -65,6 +60,6 @@ export const InfoPrint = () => {
             );
           }
         )}
-    </>
+    </div>
   );
 };

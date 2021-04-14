@@ -28,6 +28,7 @@ const Main = () => {
 
   const caruselImg = useSelector(state => state.state.caruselImg);
   const spin = useSelector(state => state.state.isSpin);
+  const dates = useSelector(state => state.state.dates);
 
   //Calendar information processing.
   const dateFormat = "YYYY MM DD";
@@ -96,7 +97,7 @@ const Main = () => {
           <span style={{ color: "#135aab" }}>{countFavorites}</span> рейсов
         </div>
 
-        <InfoPrint />
+        <InfoPrint dates={dates}/>
       </div>
     </div>
   );
