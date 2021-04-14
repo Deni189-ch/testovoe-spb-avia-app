@@ -1,18 +1,17 @@
-
 //Processing information on aircraft departure
 export const getPlace = ( id, Quotes, Places, Name ) => {
 
   const getPlaceString = (filterID) => {
-    return Places.reduce( (acc, {IataCode, CityName, PlaceId}) => {
-      if(PlaceId === filterID) acc = `${CityName} (${IataCode})`
+    return Places.reduce(( acc, {IataCode, CityName, PlaceId} ) => {
+      if (PlaceId === filterID) acc = `${CityName} (${IataCode})`
       return acc
     }, '')
   }
 
-  return Object.values(Quotes).reduce( ( acc, {
+  return Object.values(Quotes).reduce(( acc, {
     MinPrice,
     QuoteDateTime,
-    OutboundLeg: {OriginId, DestinationId, CarrierIds, DepartureDate}} ) => {
+    OutboundLeg: {OriginId, DestinationId, CarrierIds, DepartureDate} }) => {
     
       const getDate = (date) => {
         const year = new Date(date).getFullYear()
@@ -37,18 +36,16 @@ export const getPlace = ( id, Quotes, Places, Name ) => {
         DepartureDate: getDate(DepartureDate),
         QuoteDateTime: getHour(QuoteDateTime),
         MinPrice: MinPrice,
+        isTicker: true,
         Name: Name,
-        isTicker: true
       }
     }
     return acc
   }, {})
 };
 
-export const getPrintInfoFight = ( {Carriers, Quotes, Places } ) => {
-
-  if(Carriers.length > 0) return Carriers.map( ( {CarrierId, Name} ) => {   
-
+export const getPrintInfoFight = ({ Carriers, Quotes, Places }) => {
+  if (Carriers.length > 0) return Carriers.map(({ CarrierId, Name }) => {
     return getPlace(CarrierId, Quotes, Places, Name)
   })
   return null

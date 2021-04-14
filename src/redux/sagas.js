@@ -1,8 +1,8 @@
 import axios from "axios";
 import { call, put, takeEvery } from "@redux-saga/core/effects";
 
-import { DATES_SORT, DATES_SORT_SAGA } from "../data/constants";
 import { setSpinAC } from "./actions";
+import { DATES_SORT, DATES_SORT_SAGA } from "../data/types";
 
 
 export function* sagaWatcher() {

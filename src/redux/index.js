@@ -1,14 +1,14 @@
-import {stateReducer} from "./state-reducer";
-import {applyMiddleware, combineReducers, compose, createStore} from "redux";
-import createSagaMiddleware from 'redux-saga';
-
 import {sagaWatcher} from './sagas';
+import {stateReducer} from "./state-reducer";
+import createSagaMiddleware from 'redux-saga';
+import {applyMiddleware, combineReducers, compose, createStore} from "redux";
+
 
 const rootReducer = combineReducers({
   state: stateReducer
 });
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
 const configurationStore = () => {
   const store = createStore(rootReducer, compose(
@@ -24,4 +24,4 @@ return store
 export default configurationStore();
 
 
-sagaMiddleware.run(sagaWatcher)
+sagaMiddleware.run(sagaWatcher);

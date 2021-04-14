@@ -5,14 +5,11 @@ import { Redirect } from "react-router-dom";
 export const withAuthRedirect = (Component) => {
   
   function RedirectComponent() {
-    const Auth = localStorage.getItem("isAuth")
-    const isAuth = JSON.parse(Auth)
+    const isAuth = JSON.parse(localStorage.getItem("isAuth"))
 
-    if (isAuth === false | isAuth === null | isAuth === undefined) {
-      return <Redirect to="/login" />
-    } else {
-      return <Component />
-    }    
+    if (Boolean(isAuth))  return <Component />
+
+    return <Redirect to="/login" />
   }
 
   return RedirectComponent

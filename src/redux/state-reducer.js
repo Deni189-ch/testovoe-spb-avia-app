@@ -1,4 +1,4 @@
-import {DATES_SORT, IS_ERROR_TOGGLE, IS_SPIN_TOGGLE } from "../data/constants";
+import {DATES_SORT, IS_ERROR_TOGGLE, IS_SPIN_TOGGLE } from "../data/types"; //types
 import { town1, town2, town3, } from "../assets/index";
 
 const initialState = {
