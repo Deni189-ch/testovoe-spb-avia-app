@@ -26,9 +26,9 @@ const Main = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const caruselImg = useSelector(state => state.state.caruselImg);
-  const spin = useSelector(state => state.state.isSpin);
-  const dates = useSelector(state => state.state.dates);
+  const caruselImg = useSelector(({ state }) => state.caruselImg);
+  const spin = useSelector(({ state }) => state.isSpin);
+  const dates = useSelector(({ state }) => state.dates);
 
   //Calendar information processing.
   const dateFormat = "YYYY MM DD";

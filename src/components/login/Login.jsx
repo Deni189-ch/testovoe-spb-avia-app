@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-//import { Redirect } from "react-router-dom";
 
 import { setToggleErrorAC, setSpinAC } from "../../redux/actions";
 
@@ -10,11 +9,11 @@ import "./style.scss";
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />; //antd-spin
 
-const Login = ({RedirectFn}) => {
+const Login = ({ RedirectFn }) => {
   const dispatch = useDispatch();
 
-  const isError = useSelector((state) => state.state.isError); //is на улевые значения ставиться
-  const spin = useSelector((state) => state.state.isSpin);
+  const isError = useSelector(({ state }) => state.isError);
+  const spin = useSelector(({ state }) => state.isSpin);
 
   const [data, setData] = useState({
     login: " ", //do not touch !

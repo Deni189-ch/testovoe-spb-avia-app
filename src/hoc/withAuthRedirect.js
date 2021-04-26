@@ -7,7 +7,7 @@ export const withAuthRedirect = (Component) => {
   function RedirectComponent() {
     const isAuth = JSON.parse(localStorage.getItem("isAuth"))
 
-    if (Boolean(isAuth))  return <Component />
+    if (isAuth)  return <Component />
 
     return <Redirect to="/login" />
   }
